@@ -1,11 +1,11 @@
 from rest_framework.response import Response
-from rest_framework_simplejwt.views import TokenObtainPairView
+from rest_framework_simplejwt.views import TokenObtainPairView, TokenRefreshView
 from rest_framework.viewsets import ModelViewSet
 from rest_framework.permissions import AllowAny
-from rest_framework import status
+from rest_framework import status, viewsets
 from rest_framework_simplejwt.tokens import RefreshToken
 from rest_framework_simplejwt.exceptions import TokenError, InvalidToken
-from core.auth.serializers import LoginSerializer, RegistrationSerializer
+from core.auth.serializer import LoginSerializer, RegistrationSerializer
 
 
 class LoginViewSet(ModelViewSet, TokenObtainPairView):
@@ -25,7 +25,7 @@ class LoginViewSet(ModelViewSet, TokenObtainPairView):
 
 
 class RegistrationViewSet(ModelViewSet, TokenObtainPairView):
-    serializer_class = RegisterSerializer
+    serializer_class = RegistrationSerializer
     permission_classes = (AllowAny,)
     http_method_names = ['post']
 

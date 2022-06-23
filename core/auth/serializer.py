@@ -25,7 +25,7 @@ class RegistrationSerializer(UserSerializer):
     email = serializers.EmailField(required=True, write_only=True, max_length=128)
     class Meta:
         model = User
-        fields = ['id', 'username', 'email', 'password', 'is_active', 'created', 'updated']
+        fields = ['id', 'username', 'email', 'password', 'is_active']
     
     def create(self, validated_data):
         try:
